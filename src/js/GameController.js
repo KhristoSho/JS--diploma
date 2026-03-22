@@ -34,7 +34,7 @@ export default class GameController {
   init() {
     this.gamePlay.drawUi(themes.prairie);
     this.createTeam("own", 3, 1 + this.gameState.currLevel);
-    this.createTeam("enemy", 1, 1 + this.gameState.currLevel);
+    this.createTeam("enemy", 3, 1 + this.gameState.currLevel);
 
     // TODO: add event listeners to gamePlay events
     // TODO: load saved stated from stateService
