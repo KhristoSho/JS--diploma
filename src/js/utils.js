@@ -23,18 +23,43 @@
  * ```
  * */
 export function calcTileType(index, boardSize) {
-  // TODO: ваш код будет тут
-  return 'center';
+  if (index === 0) {
+    return "top-left";
+  } else if (index === boardSize - 1) {
+    return "top-right";
+  } else if (0 < index && index < boardSize - 1) {
+    return "top";
+  } else if (index === boardSize * 7) {
+    return "bottom-left";
+  } else if (index === boardSize * 8 - 1) {
+    return "bottom-right";
+  } else if (boardSize * 7 < index && index < boardSize * 8 - 1) {
+    return "bottom";
+  } else if (
+    Array.from({ length: boardSize - 2 }, (_, i) => {
+      return boardSize * i + boardSize;
+    }).includes(index)
+  ) {
+    return "left";
+  } else if (
+    Array.from({ length: boardSize - 2 }, (_, i) => {
+      return boardSize * (i + 1) - 1 + boardSize;
+    }).includes(index)
+  ) {
+    return "right";
+  } else {
+    return "center";
+  }
 }
 
 export function calcHealthLevel(health) {
   if (health < 15) {
-    return 'critical';
+    return "critical";
   }
 
   if (health < 50) {
-    return 'normal';
+    return "normal";
   }
 
-  return 'high';
+  return "high";
 }

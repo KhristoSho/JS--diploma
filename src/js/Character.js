@@ -13,12 +13,27 @@
  * vampire
  */
 export default class Character {
-  constructor(level, type = 'generic') {
+  constructor(level, type = "generic") {
+    if (new.target === Character) {
+      throw new Error("Cannot instantiate class 'Character'");
+    }
     this.level = level;
     this.attack = 0;
     this.defence = 0;
     this.health = 50;
     this.type = type;
-    // TODO: выбросите исключение, если кто-то использует "new Character()"
+  }
+
+  levelUp(level) {
+    this.level += level;
+    this.health = 50;
+    for (let i = 0; i < level; i++) {
+      this.attack = Math.round(
+        (this.attack + this.attack * (80 + this.health)) / 100,
+      );
+      this.defence = Math.round(
+        (this.defence + this.defence * (80 + this.health)) / 100,
+      );
+    }
   }
 }

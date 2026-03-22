@@ -4,7 +4,8 @@ export class Pool {
     for (let i = 0; i < numPools; i++) {
       pools.insertAdjacentHTML(
         "beforeEnd",
-        `<div class="pool" data-id="${i + 1}"></div>`);
+        `<div class="pool" data-id="${i + 1}"></div>`,
+      );
     }
   }
 
