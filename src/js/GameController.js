@@ -429,7 +429,7 @@ export default class GameController {
     this.gamePlay.redrawPositions(this.positions);
   }
 
-  attackCharacter(ownChar, enemyChar) {
+  async attackCharacter(ownChar, enemyChar) {
     const attacker = ownChar.character;
     const target = enemyChar.character;
     const damage = Math.max(
@@ -437,7 +437,7 @@ export default class GameController {
     );
 
     target.health = target.health - damage;
-    this.gamePlay.showDamage(enemyChar.position, damage);
+    await this.gamePlay.showDamage(enemyChar.position, damage);
     if (target.health < 1) {
       this.positions = this.positions.filter((pos) => {
         return pos.character !== target;
